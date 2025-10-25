@@ -4,6 +4,7 @@ version: 3
 api-version: 1.21
 author: C4K3.org
 description: Automutes noisy people
+folia-supported: true
 commands:
   mute:
     description: Mutes a player
