@@ -1,9 +1,9 @@
 package net.simpvp.NoSpam;
 
 import java.util.ArrayDeque;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -13,10 +13,10 @@ public class SpamHandler {
 	/* This hashmap is to include lists of messages by all players
 	 * 
 	 * Key is the player UUID, the value is an array of that player's chat times */
-	private static HashMap<UUID, ArrayDeque<Long>> hashTimes = new HashMap<UUID, ArrayDeque<Long>>();
+	private static ConcurrentHashMap<UUID, ArrayDeque<Long>> hashTimes = new ConcurrentHashMap<UUID, ArrayDeque<Long>>();
 
 	/* This hashmap will hold all the muted players. <Player UUID, time they're unmuted as System.nanoTime / 1000 000> */
-	private static HashMap<UUID, Long> mutedPlayers = new HashMap<UUID, Long>();
+	private static ConcurrentHashMap<UUID, Long> mutedPlayers = new ConcurrentHashMap<UUID, Long>();
 
 	/** This function should be called every time a player sends a chat message or a command identified as a chat message.
 	 * It will check the message, and if the player is muted / should be muted then it will return true (and add them to the muted players list.)
